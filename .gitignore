@@ -1,0 +1,30 @@
+# Python-related ignores
+__pycache__/
+*.py[cod]
+*$py.class
+*.ipynb_checkpoints
+
+# Data ignores
+data/
+*.tar.gz
+*.zip
+*.csv.gz
+
+# Result and Log ignores
+results/
+*.pt
+*.pth
+*.csv
+
+# OS-related
+.DS_Store
+
+# Original image ignores from user
+*.png
+*.jpg
+*.jpeg
+*.gif2
+*.PNG
+*.JPG
+*.JPEG
+*.GIF
