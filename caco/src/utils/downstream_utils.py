@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import pickle
 import random
 from pathlib import Path
 from typing import Dict, Iterable, Tuple
@@ -113,7 +114,12 @@ def _load_pretrained_into_encoder(
     base_encoder: str,
     ckpt_path: str,
 ) -> int:
-    ckpt = torch.load(ckpt_path, map_location="cpu")
+    try:
+        ckpt = torch.load(ckpt_path, map_location="cpu")
+    except pickle.UnpicklingError:
+        # PyTorch >=2.6 defaults torch.load(weights_only=True), but Lightning .ckpt
+        # files need the historical behavior to deserialize metadata containers.
+        ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
     raw_state = _extract_state_dict(ckpt)
 
     candidates = [
