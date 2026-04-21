@@ -213,6 +213,7 @@ def main() -> None:
         "backbone_type": args.backbone_type,
         "base_encoder": args.base_encoder,
         "train_mode": args.train_mode,
+        "ckpt_path": args.ckpt_path,
         "seed": args.seed,
         "best_val_acc": best_val_acc,
         "best_epoch": best_epoch,

@@ -174,10 +174,25 @@ class Bigearthnet(Dataset):
                     bad_patches.update(f.read().splitlines())
 
         self.samples = []
+        skipped_missing = 0
         with open(self.root / f'{self.split}.txt') as f:
             for patch_id in f.read().splitlines():
-                if patch_id not in bad_patches:
-                    self.samples.append(self.root / subdir / patch_id)
+                if patch_id in bad_patches:
+                    continue
+
+                patch_dir = self.root / subdir / patch_id
+                if not self._is_complete_patch(patch_dir, patch_id):
+                    skipped_missing += 1
+                    continue
+                self.samples.append(patch_dir)
+
+        if skipped_missing:
+            print(f"[BigEarthNet:{self.split}] skipped {skipped_missing} missing/incomplete patches from split list")
+        if not self.samples:
+            raise RuntimeError(
+                f"No valid BigEarthNet samples found for split '{self.split}' under {self.root / subdir}. "
+                "Check split files and extracted patch contents."
+            )
 
     def _resolve_subdir(self):
         candidates = ['BigEarthNet-v1.0', 'BigEarthNet-S2-v1.0']
@@ -215,6 +230,20 @@ class Bigearthnet(Dataset):
             for row in reader:
                 if row:
                     out.write(row[0].strip() + '\n')
+
+    def _is_complete_patch(self, patch_dir, patch_id):
+        if not patch_dir.is_dir():
+            return False
+
+        label_path = patch_dir / f'{patch_id}_labels_metadata.json'
+        if not label_path.exists():
+            return False
+
+        for band in self.bands:
+            tif_path = patch_dir / f'{patch_id}_{band}.tif'
+            if not tif_path.exists():
+                return False
+        return True
 
     def __getitem__(self, index):
         path = self.samples[index]

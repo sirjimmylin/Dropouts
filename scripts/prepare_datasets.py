@@ -168,6 +168,27 @@ def extract_subset_from_stream(
     return extracted
 
 
+def resolve_bigearthnet_subdir(ben_root: Path) -> Path:
+    for candidate in ("BigEarthNet-v1.0", "BigEarthNet-S2-v1.0"):
+        path = ben_root / candidate
+        if path.exists():
+            return path
+    return ben_root / "BigEarthNet-v1.0"
+
+
+def is_complete_bigearthnet_patch(ben_root: Path, patch_id: str) -> bool:
+    patch_root = resolve_bigearthnet_subdir(ben_root)
+    patch_dir = patch_root / patch_id
+    if not patch_dir.is_dir():
+        return False
+    if not (patch_dir / f"{patch_id}_labels_metadata.json").exists():
+        return False
+    for band in ("B04", "B03", "B02"):
+        if not (patch_dir / f"{patch_id}_{band}.tif").exists():
+            return False
+    return True
+
+
 def maybe_prepare_bigearthnet_subset(
     ben_root: Path,
     subset_train: int,
@@ -188,13 +209,18 @@ def maybe_prepare_bigearthnet_subset(
     target_ids = set(train_ids + val_ids + test_ids)
     extracted_ids = extract_subset_from_stream(ben_root, target_ids)
 
-    train_ids = [x for x in train_ids if x in extracted_ids]
-    val_ids = [x for x in val_ids if x in extracted_ids]
-    test_ids = [x for x in test_ids if x in extracted_ids]
+    train_ids = [x for x in train_ids if x in extracted_ids and is_complete_bigearthnet_patch(ben_root, x)]
+    val_ids = [x for x in val_ids if x in extracted_ids and is_complete_bigearthnet_patch(ben_root, x)]
+    test_ids = [x for x in test_ids if x in extracted_ids and is_complete_bigearthnet_patch(ben_root, x)]
 
     write_lines(ben_root / "train.subset.txt", train_ids)
     write_lines(ben_root / "val.subset.txt", val_ids)
     write_lines(ben_root / "test.subset.txt", test_ids)
+
+    print(
+        "[info] Wrote subset splits with complete RGB+metadata patches only: "
+        f"train={len(train_ids)}, val={len(val_ids)}, test={len(test_ids)}"
+    )
 
     if activate_subset_splits:
         for split in ("train", "val", "test"):

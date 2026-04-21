@@ -178,7 +178,7 @@ def build_paper_comparison_rows(aggregated_rows: list[dict[str, Any]]) -> list[d
             delta_1m = ours_best - paper_1m
 
         if row["backbone_type"] == "pretrain":
-            note = "Our pretrain uses CACo-10k; paper reports CACo-100k/1m."
+            note = "Our pretrain checkpoint/setup may differ from paper-reported CACo-100k/1m settings."
         else:
             note = "Baseline initialization in our setup."
 
