@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+
+# Local working dirs (not tracked; reproducible outputs)
+data/
+checkpoints/
+envs/
+eval_results/
+training_logs/
+src/histogram_caco/
+
+# Editor/OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
