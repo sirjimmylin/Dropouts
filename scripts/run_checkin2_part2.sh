@@ -15,6 +15,7 @@ BEN_VAL_FRAC="${BEN_VAL_FRAC:-1.0}"
 MAX_EPOCHS="${MAX_EPOCHS:-100}"
 NUM_WORKERS="${NUM_WORKERS:-8}"
 CKPT_PATH="${CKPT_PATH:-}"
+NORMALIZED_CKPT_PATH=""
 
 if [[ " $INITS " == *" pretrain "* ]]; then
   if [[ -z "$CKPT_PATH" ]]; then
@@ -30,6 +31,18 @@ if [[ " $INITS " == *" pretrain "* ]]; then
 fi
 
 mkdir -p "$OUTPUT_DIR"
+
+if [[ " $INITS " == *" pretrain "* ]]; then
+  CKPT_FILE="$(basename "$CKPT_PATH")"
+  CKPT_STEM="${CKPT_FILE%.*}"
+  NORMALIZED_CKPT_PATH="$OUTPUT_DIR/normalized_checkpoints/${CKPT_STEM}_${BASE_ENCODER}_caco_compatible.pt"
+  echo "Normalizing pretrain checkpoint for $BASE_ENCODER -> $NORMALIZED_CKPT_PATH"
+  "$PYTHON_BIN" "$ROOT_DIR/scripts/normalize_pretrain_checkpoint.py" \
+    --input_ckpt "$CKPT_PATH" \
+    --output_ckpt "$NORMALIZED_CKPT_PATH" \
+    --base_encoder "$BASE_ENCODER" \
+    --overwrite
+fi
 
 echo "=== EuroSAT: linear + finetune, inits [$INITS] ==="
 for CUR_SEED in $SEEDS; do
@@ -49,7 +62,7 @@ for CUR_SEED in $SEEDS; do
         --output_dir "$OUTPUT_DIR/eurosat"
       )
       if [[ "$BACKBONE_TYPE" == "pretrain" ]]; then
-        CMD+=(--ckpt_path "$CKPT_PATH")
+        CMD+=(--ckpt_path "$NORMALIZED_CKPT_PATH")
       fi
       "${CMD[@]}"
     done
@@ -78,7 +91,7 @@ for TRAIN_FRAC in $BEN_TRAIN_FRACS; do
           --output_dir "$OUTPUT_DIR/bigearthnet"
         )
         if [[ "$BACKBONE_TYPE" == "pretrain" ]]; then
-          CMD+=(--ckpt_path "$CKPT_PATH")
+          CMD+=(--ckpt_path "$NORMALIZED_CKPT_PATH")
         fi
         "${CMD[@]}"
       done
