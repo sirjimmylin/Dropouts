@@ -46,6 +46,14 @@ python scripts/prepare_datasets.py --download_bigearthnet_archive
 ```
 
 ### 3) Run EuroSAT experiments
+If your teammate checkpoint is not already in CACo format, normalize it once first:
+```bash
+python scripts/normalize_pretrain_checkpoint.py \
+  --input_ckpt /path/to/teammate_pretrain.ckpt \
+  --output_ckpt checkpoints/teammate_resnet18_caco_compatible.pt \
+  --base_encoder resnet18
+```
+
 Linear probe:
 ```bash
 python caco/src/main_eurosat_part2.py \
@@ -93,6 +101,8 @@ python caco/src/main_bigearthnet.py \
 ```bash
 CKPT_PATH=/path/to/caco_pretrain.ckpt bash scripts/run_checkin2_part2.sh
 ```
+When `INITS` includes `pretrain`, this script automatically writes a normalized checkpoint
+under `results/.../normalized_checkpoints/` and uses it for both EuroSAT and BigEarthNet runs.
 
 Optional environment variables for batch runs:
 ```bash
