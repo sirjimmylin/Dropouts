@@ -1,0 +1,78 @@
+## SLURM PROLOG ###############################################################
+##    Job ID : 1797875
+##  Job Name : bigearthnet
+##  Nodelist : gpu2708
+##      CPUs : 
+##  Mem/Node : 32768 MB
+## Directory : /oscar/home/ppate161
+##   Job Started : Sun Apr 19 09:10:27 PM EDT 2026
+###############################################################################
+Using device: cuda
+Already exists: resnet18_caco_geo_100k_1000.pth
+Already exists: resnet18_seco_geo_100k_1000.pth
+Loading datasets...
+Train: 26969 | Val: 123723
+
+========== Random Init ==========
+  Epoch  10/100 | Loss: 0.3826 | Val mAP: 28.43
+  Epoch  20/100 | Loss: 0.3793 | Val mAP: 28.88
+  Epoch  30/100 | Loss: 0.3771 | Val mAP: 31.22
+  Epoch  40/100 | Loss: 0.3739 | Val mAP: 33.20
+  Epoch  50/100 | Loss: 0.3698 | Val mAP: 34.66
+  Epoch  60/100 | Loss: 0.3648 | Val mAP: 35.96
+  Epoch  70/100 | Loss: 0.3642 | Val mAP: 36.13
+  Epoch  80/100 | Loss: 0.3635 | Val mAP: 36.26
+  Epoch  90/100 | Loss: 0.3636 | Val mAP: 36.27
+  Epoch 100/100 | Loss: 0.3633 | Val mAP: 36.29
+  => Best Val mAP: 36.29
+
+========== ImageNet ==========
+  Epoch  10/100 | Loss: 0.3227 | Val mAP: 56.56
+  Epoch  20/100 | Loss: 0.2903 | Val mAP: 60.87
+  Epoch  30/100 | Loss: 0.2781 | Val mAP: 63.00
+  Epoch  40/100 | Loss: 0.2709 | Val mAP: 64.34
+  Epoch  50/100 | Loss: 0.2658 | Val mAP: 65.32
+  Epoch  60/100 | Loss: 0.2619 | Val mAP: 66.03
+  Epoch  70/100 | Loss: 0.2611 | Val mAP: 66.10
+  Epoch  80/100 | Loss: 0.2609 | Val mAP: 66.16
+  Epoch  90/100 | Loss: 0.2607 | Val mAP: 66.17
+  Epoch 100/100 | Loss: 0.2608 | Val mAP: 66.17
+  => Best Val mAP: 66.17
+
+========== SeCo 100k ==========
+Loaded: resnet18_seco_geo_100k_1000.pth
+Missing: [] | Unexpected: []
+  Epoch  10/100 | Loss: 0.3782 | Val mAP: 38.12
+  Epoch  20/100 | Loss: 0.3386 | Val mAP: 48.73
+  Epoch  30/100 | Loss: 0.3185 | Val mAP: 53.58
+  Epoch  40/100 | Loss: 0.3050 | Val mAP: 56.43
+  Epoch  50/100 | Loss: 0.2955 | Val mAP: 58.57
+  Epoch  60/100 | Loss: 0.2883 | Val mAP: 60.25
+  Epoch  70/100 | Loss: 0.2872 | Val mAP: 60.40
+  Epoch  80/100 | Loss: 0.2868 | Val mAP: 60.54
+  Epoch  90/100 | Loss: 0.2866 | Val mAP: 60.55
+  Epoch 100/100 | Loss: 0.2867 | Val mAP: 60.57
+  => Best Val mAP: 60.57
+
+========== CACo 100k ==========
+Loaded: resnet18_caco_geo_100k_1000.pth
+Missing: [] | Unexpected: []
+  Epoch  10/100 | Loss: 0.3657 | Val mAP: 41.85
+  Epoch  20/100 | Loss: 0.3282 | Val mAP: 53.28
+  Epoch  30/100 | Loss: 0.3061 | Val mAP: 57.31
+  Epoch  40/100 | Loss: 0.2929 | Val mAP: 59.85
+  Epoch  50/100 | Loss: 0.2842 | Val mAP: 61.65
+  Epoch  60/100 | Loss: 0.2782 | Val mAP: 62.95
+  Epoch  70/100 | Loss: 0.2774 | Val mAP: 63.06
+  Epoch  80/100 | Loss: 0.2767 | Val mAP: 63.16
+  Epoch  90/100 | Loss: 0.2768 | Val mAP: 63.17
+  Epoch 100/100 | Loss: 0.2768 | Val mAP: 63.18
+  => Best Val mAP: 63.18
+
+Method                 Ours (mAP)  Paper (mAP)       Diff
+--------------------------------------------------------
+Random Init                 36.29        42.87      -6.58
+ImageNet                    66.17        65.43      +0.74
+SeCo 100k                   60.57        65.80      -5.23
+CACo 100k                   63.18        67.89      -4.71
+Plot saved.
