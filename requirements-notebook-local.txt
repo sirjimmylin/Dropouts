@@ -1,0 +1,11 @@
+torch
+torchvision
+matplotlib
+scikit-learn
+pillow
+tqdm
+pandas
+lmdb
+tifffile
+jupyter
+ipykernel
