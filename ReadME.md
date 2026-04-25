@@ -22,6 +22,13 @@ This repo now includes:
 bash scripts/setup_part2_env.sh
 ```
 
+### 1b) Local VSCode notebook setup (EuroSAT/BigEarthNet notebooks)
+```bash
+bash scripts/setup_local_notebook_env.sh
+```
+Then in VSCode notebook kernel picker, choose:
+`Python (Final-Project Local)`.
+
 ### 2) Dataset setup
 Download EuroSAT + BigEarthNet metadata/splits:
 ```bash
