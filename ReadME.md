@@ -6,6 +6,7 @@
 
 ## Reference GitHub
 [Change-Aware Sampling and Contrastive Learning for Satellite Images](https://github.com/utkarshmall13/CACo)
+<<<<<<< HEAD
 
 ## Part 2 (Check-in #2) implementation in this repo
 
@@ -140,3 +141,5 @@ Outputs are saved under `results/` as:
 - `tables/aggregated_metrics.csv` (seed-aggregated metrics)
 - `tables/paper_vs_ours.csv` (paper target comparisons)
 - `tables/claim_checks.csv` (claim + hypothesis checks)
+=======
+>>>>>>> 60b6e5eb546065e67dc3adc7d0b29644f53d53d9
