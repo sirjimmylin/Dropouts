@@ -28,3 +28,8 @@ results/
 *.JPG
 *.JPEG
 *.GIF
+
+# Paper and documentation ignores
+Mall_Change-Aware_Sampling_and_Contrastive_Learning_for_Satellite_Images_CVPR_2023_paper.pdf
+Plan.md
+ProjectOverview.md
