@@ -11,7 +11,7 @@ data/
 *.csv.gz
 
 # Result and Log ignores
-results/
+/results/**
 *.pt
 *.pth
 *.csv
@@ -21,11 +21,9 @@ results/
 
 # Original image ignores from user
 *.png
-*.jpg
 *.jpeg
 *.gif2
 *.PNG
-*.JPG
 *.JPEG
 *.GIF
 
@@ -33,3 +31,6 @@ results/
 Mall_Change-Aware_Sampling_and_Contrastive_Learning_for_Satellite_Images_CVPR_2023_paper.pdf
 Plan.md
 ProjectOverview.md
+
+# Miscellaneous
+/scripts/**
