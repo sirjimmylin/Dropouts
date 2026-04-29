@@ -21,7 +21,7 @@ data/
 
 # Original image ignores from user
 *.png
-*.jpg
+
 !CSCI1470 Final Project Poster.jpg
 *.jpeg
 *.gif2
