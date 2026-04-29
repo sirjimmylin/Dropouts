@@ -11,7 +11,7 @@ data/
 *.csv.gz
 
 # Result and Log ignores
-/results/
+/results/**
 *.pt
 *.pth
 *.csv
@@ -35,4 +35,5 @@ Plan.md
 ProjectOverview.md
 
 # Miscellaneous
-/scripts/
+/scripts/**
+
