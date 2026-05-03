@@ -69,7 +69,6 @@ Full numbers and per-epoch histories are in [`eval_results/`](eval_results/).
 ├── eval_results/             # numerical artifacts behind the report
 │   ├── eurosat/{metrics_summary.json, linear_probe/*_history.json}
 │   └── ucmerced/{metrics_summary.json, linear_probe/*_history.json}
-├── training_logs/            # per-epoch metrics.csv for each pretrain
 └── media/histogram.png       # representative GMM change-ratio histogram
 ```
 
