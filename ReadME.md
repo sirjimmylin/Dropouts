@@ -60,14 +60,11 @@ Full numbers and per-epoch histories are in [`eval_results/`](eval_results/).
 │   ├── normalize_pretrain_checkpoint.py
 │   ├── generate_checkin2_tables.py
 │   ├── setup_local_notebook_env.sh
-│   ├── setup_part2_env.sh
-│   └── run_checkin2_part2.sh
+│   └── setup_part2_env.sh
 │
 ├── finetuning/               # downstream finetune (vs. linear-probe)
 │   ├── eurosat/              # eurosat_finetune.{py,ipynb}
 │   └── bigearthnet/          # train_bigearthnet.py + slurm out
-│
-├── notebooks/                # exploratory / colab linear-probe notebooks
 │
 ├── eval_results/             # numerical artifacts behind the report
 │   ├── eurosat/{metrics_summary.json, linear_probe/*_history.json}
