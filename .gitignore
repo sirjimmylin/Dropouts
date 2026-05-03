@@ -1,36 +1,35 @@
-# Python-related ignores
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-*.ipynb_checkpoints
+.ipynb_checkpoints/
+*.egg-info/
 
-# Data ignores
+# Bulk artifacts / regenerable
 data/
+checkpoints/
+envs/
+*.pth
+*.ckpt
 *.tar.gz
 *.zip
 *.csv.gz
 
-# Result and Log ignores
-/results/**
-*.pt
-*.pth
-*.csv
+# Eval results: keep summary JSONs and per-epoch history JSONs;
+# exclude bulk feature dumps, raw logs, retrieval intermediates
+eval_results/**/features/
+eval_results/**/logs/
+eval_results/**/retrieval/
 
-# OS-related
+# Training logs: keep metrics.csv; exclude raw .log files and tensorboard
+training_logs/*.log
+training_logs/**/tensorboard/
+
+# Per-epoch histogram dumps stay local; one representative is in media/
+src/histogram_caco/
+
+# Editor/OS
 .DS_Store
-
-# Original image ignores from user
-*.png
-*.jpeg
-*.gif2
-*.PNG
-*.JPEG
-*.GIF
-
-# Paper and documentation ignores
-Mall_Change-Aware_Sampling_and_Contrastive_Learning_for_Satellite_Images_CVPR_2023_paper.pdf
-Plan.md
-ProjectOverview.md
-
-# Miscellaneous
-/scripts/**
+.idea/
+.vscode/
+*.swp
