@@ -68,7 +68,6 @@ Full numbers and per-epoch histories are in [`eval_results/`](eval_results/).
 │   └── bigearthnet/          # train_bigearthnet.py + slurm out
 │
 ├── notebooks/                # exploratory / colab linear-probe notebooks
-├── caco/                     # unmodified upstream CACo reference (read-only mirror)
 │
 ├── eval_results/             # numerical artifacts behind the report
 │   ├── eurosat/{metrics_summary.json, linear_probe/*_history.json}
