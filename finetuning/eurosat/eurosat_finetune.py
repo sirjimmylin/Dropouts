@@ -30,9 +30,6 @@ This notebook fine-tunes and evaluates CACo pre-trained backbones on the **EuroS
 
 import os
 
-if not os.path.isdir('CACo'):
-    !git clone https://github.com/utkarshmall13/CACo.git
-
 # Add src to path so we can import from datasets/ and utils/
 import sys
 sys.path.insert(0, 'CACo/src')
