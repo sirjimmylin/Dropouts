@@ -1,4 +1,4 @@
-# Dropouts — Critical Replication of CACo
+# Dropouts — Replication of CACo
 
 CSCI 1470 (Deep Learning) final project, Brown University. We replicate
 **Change-Aware Sampling and Contrastive Learning for Satellite Images**
