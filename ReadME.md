@@ -77,41 +77,17 @@ Full numbers and per-epoch histories are in [`eval_results/`](eval_results/).
 └── media/histogram.png       # representative GMM change-ratio histogram
 ```
 
-## Reproducing the headline numbers
+## How the artifacts were produced
 
-The launchers in `scripts/launch/` hard-code paths to the working clone
-on Brown CCV (`/users/vsmokash/deep-learning/CACo/...`). They are
-preserved as snapshots of the exact commands that produced the
-checkpoints. To re-run elsewhere:
-
-```bash
-# 1. Set up the environment
-bash install.sh
-conda activate caco
-
-# 2. Download data (Sentinel-2 10k clean_geography from the paper authors,
-#    plus EuroSAT_RGB.zip and UCMerced_LandUse.zip — see scripts/prepare_datasets.py)
-python scripts/prepare_datasets.py
-
-# 3. Pretrain (one of: caco | seco | teco)
-python src/train_caco.py \
-  --data_dir data/clean_10k_geography \
-  --data_mode caco \
-  --base_encoder resnet18 \
-  --batch_size 256 --num_negatives 4096 --emb_dim 128 \
-  --learning_rate 0.03 --max_epochs 400 --schedule 250 350
-
-# 4. Convert Lightning checkpoint → plain encoder .pth
-python src/finalize_model.py --ckpt checkpoints/.../caco_final.ckpt
-
-# 5. Linear probe (produces the Table 1 numbers + JSONs in eval_results/)
-python src/eval_eurosat_all.py
-python src/eval_ucmerced_all.py
-```
-
-For the 100k pipeline-calibration numbers, point the eval scripts at
-the upstream CACo / SeCo checkpoints from
-`research.cs.cornell.edu/caco/checkpoints/`.
+The exact commands run on Brown CCV are preserved as launcher snapshots
+in `scripts/launch/` (one per pretraining objective, plus a resume
+script). Pretraining was driven by `src/train_caco.py` with
+`--data_mode {seco,teco,caco}`; downstream linear probes were run with
+`src/eval_eurosat_all.py` and `src/eval_ucmerced_all.py`; BigEarthNet
+finetuning lives in `finetuning/bigearthnet/`. The 100k pipeline-
+calibration row in Table 1 used the upstream checkpoints from
+`research.cs.cornell.edu/caco/checkpoints/`, registered in
+`src/utils/pretrained_checkpoints.py`.
 
 ## Notes on scope
 
