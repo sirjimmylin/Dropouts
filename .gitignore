@@ -6,12 +6,24 @@ __pycache__/
 .Python
 *.egg-info/
 
-# Local working dirs (not tracked; reproducible outputs)
+# Bulk artifacts / regenerable
 data/
 checkpoints/
 envs/
-eval_results/
-training_logs/
+*.pth
+*.ckpt
+
+# Eval results: keep summary JSONs and per-epoch history JSONs;
+# exclude bulk feature dumps, raw logs, retrieval intermediates
+eval_results/**/features/
+eval_results/**/logs/
+eval_results/**/retrieval/
+
+# Training logs: keep metrics.csv; exclude raw .log files and tensorboard
+training_logs/*.log
+training_logs/**/tensorboard/
+
+# Per-epoch histogram dumps stay local; one representative is in media/
 src/histogram_caco/
 
 # Editor/OS
