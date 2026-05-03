@@ -41,7 +41,6 @@ for d in (FEAT_DIR, LP_DIR, RET_DIR, LOG_DIR):
 MODELS = {
     'random': 'random',
     'imagenet': 'imagenet',
-    'moco': ROOT / 'checkpoints/resnet18-clean_10k_geography-moco-ep400-bs256-q4096/resnet18_moco_geo_10k_400.pth',
     'seco': ROOT / 'checkpoints/resnet18-clean_10k_geography-seco-ep400-bs256-q4096/resnet18_seco_geo_10k_400.pth',
     'teco': ROOT / 'checkpoints/resnet18-clean_10k_geography-teco-ep400-bs256-q4096/resnet18_teco_geo_10k_400.pth',
     'caco': ROOT / 'checkpoints/resnet18-clean_10k_geography-caco-ep400-bs256-q4096/resnet18_caco_geo_10k_400.pth',
