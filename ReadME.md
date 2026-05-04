@@ -2,13 +2,14 @@
 
 CSCI 1470 (Deep Learning) final project, Brown University. We replicate
 **Change-Aware Sampling and Contrastive Learning for Satellite Images**
-(Mall, Hariharan, Bala, CVPR 2023) and run a hypothesis-driven ablation
+(Mall et al., 2023) and run a hypothesis-driven ablation
 that isolates the contribution of long-term temporal contrast vs. the
 change-awareness mechanism.
 
-**Team:** Devraj Raghuvanshi, Jimmy Lin, Paneri Patel, Vinayak Mokashi.
+**Team:** Dropouts \
+**Members:** Devraj Raghuvanshi, Jimmy Lin, Paneri Patel, Vinayak Mokashi
 
-- Paper (original): [`paper.pdf`](paper.pdf)
+- Original Paper: [https://research.cs.cornell.edu/caco/static/pdfs/caco.pdf](https://research.cs.cornell.edu/caco/static/pdfs/caco.pdf)
 - Poster: [`poster/poster.jpg`](poster/poster.jpg)
 - Pretrained checkpoints (CACo / SeCo / TeCo, ResNet-18, 10k, 400 ep): see [`WEIGHTS.md`](WEIGHTS.md)
 
@@ -35,10 +36,8 @@ Full numbers and per-epoch histories are in [`eval_results/`](eval_results/).
 
 ```
 .
-├── paper.pdf                 # original CACo paper
-├── poster/poster.jpg         # final poster (4:3 horizontal JPG)
-├── ProjectOverview.md        # course-provided project brief
-├── WEIGHTS.md                # Drive links for the three pretrained checkpoints
+├── poster/poster.jpg         # final poster
+├── WEIGHTS.md                # drive links for the three pretrained checkpoints
 ├── requirements.txt          # pretraining environment
 ├── requirements-notebook-local.txt   # downstream-eval environment
 ├── install.sh                # creates the conda env
