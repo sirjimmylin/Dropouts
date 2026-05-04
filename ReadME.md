@@ -13,6 +13,8 @@ change-awareness mechanism.
 - Poster: [`poster/poster.jpg`](poster/poster.jpg)
 - Pretrained checkpoints (CACo / SeCo / TeCo, ResNet-18, 10k, 400 ep): see [`WEIGHTS.md`](WEIGHTS.md)
 
+<img src="poster/poster.jpg" width="1000"/>
+
 ## Headline result
 
 At 10k pretraining scale, long-term temporal contrast (TeCo) alone
