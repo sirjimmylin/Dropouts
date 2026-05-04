@@ -1,4 +1,4 @@
-# Dropouts — Replication of CACo
+# Change-Aware Contrastive Learning for Satellite Imagery
 
 CSCI 1470 (Deep Learning) final project, Brown University. We replicate
 **Change-Aware Sampling and Contrastive Learning for Satellite Images**
